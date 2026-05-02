@@ -34,13 +34,23 @@
             background-color: var(--bg);
             color: var(--dark);
             line-height: 1.6;
-            padding: 40px 0;
+            padding: 20px 0 40px; /* 20px top padding always */
         }
 
         @media print {
-            @page { margin: 0; size: auto; }
-            body { padding: 2cm; background-color: white; }
-            .no-print { display: none; }
+            @page { 
+                margin: 0; 
+                size: auto; 
+            }
+            body { 
+                padding: 2cm 2cm 2cm; /* Keeps the print margins clean */
+                padding-top: 20px !important; /* Forces 20px top in print if needed */
+                background-color: white; 
+            }
+            .no-print { 
+                display: none !important; 
+                visibility: hidden !important;
+            }
             .container { max-width: 100% !important; margin: 0 !important; }
             .issue-card { break-inside: avoid; border: 1px solid #eee !important; }
         }
