@@ -35,8 +35,15 @@
         }
 
         @media print {
+            @page { 
+                margin: 0; 
+                size: auto;
+            }
+            body { 
+                padding: 2cm; 
+                background-color: white; 
+            }
             .no-print { display: none; }
-            body { padding: 0; }
             .container { max-width: 100% !important; }
         }
 
