@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Website Audit - Synloop.in</title>
+    <title>Audit Report - Synloop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;600;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #eff6ff;
-            --secondary: #64748b;
-            --dark: #0f172a;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg: #fdfdfd;
-            --card-bg: #ffffff;
-            --border: #f1f5f9;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --accent: #ff3e00;
+            --dark: #000000;
+            --light-gray: #f2f2f2;
+            --text-muted: #666666;
+            --success: #00ff88;
+            --warning: #ffcc00;
+            --danger: #ff4444;
         }
 
         * {
@@ -35,597 +27,272 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #ffffff;
             color: var(--dark);
-            line-height: 1.5;
-            padding-bottom: 80px;
+            padding: 60px 20px;
+            line-height: 1.4;
         }
 
-        /* High Quality Print/Export Support */
         @media print {
-            body { background-color: white; padding-bottom: 0; }
             .no-print { display: none; }
-            .container { margin-top: 0 !important; max-width: 100% !important; }
-            .performance-card, .issue-item { break-inside: avoid; border: 1px solid #eee !important; box-shadow: none !important; }
-            header { padding: 40px 20px !important; }
+            body { padding: 0; }
+            .container { max-width: 100% !important; }
         }
 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Minimal Header */
         header {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: white;
-            padding: 100px 20px 140px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.1;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
+            margin-bottom: 80px;
+            border-left: 8px solid var(--accent);
+            padding-left: 30px;
         }
 
         header h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.9;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: -80px auto 0;
-            padding: 0 25px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Top Info Bar */
-        .info-bar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 35px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
+        .header-meta {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
+            gap: 40px;
         }
 
-        .info-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .header-meta b { color: var(--dark); }
 
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .info-text span {
+        /* Minimal Metrics */
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 40px;
             display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--secondary);
-            letter-spacing: 1px;
         }
 
-        .info-text h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        /* Section Headings */
-        .section-header {
-            margin: 60px 0 30px;
+        .metrics-flex {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
         }
 
-        .section-header h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Metrics Cards */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-        }
-
-        .performance-card {
-            background: var(--card-bg);
-            border-radius: 24px;
+        .metric-box {
+            flex: 1;
+            min-width: 200px;
+            background: var(--light-gray);
             padding: 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0px;
+            transition: all 0.3s ease;
         }
 
-        .performance-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+        .metric-box:hover {
+            background: var(--dark);
+            color: white;
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 35px;
+        .metric-box h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
         }
 
-        .score-display {
-            text-align: center;
+        .metric-box p {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            opacity: 0.6;
         }
 
-        .score-circle {
-            width: 85px;
-            height: 85px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.75rem;
-            border: 6px solid;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
-
-        .score-circle.perfect { color: var(--success); border-color: var(--success); }
-        .score-circle.good { color: var(--warning); border-color: var(--warning); }
-
-        .metric-list {
+        /* Catchy List */
+        .issue-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .metric-item {
-            background: var(--bg);
-            padding: 15px 20px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .metric-item .label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-
-        .metric-item .value {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        /* Issue List */
-        .issue-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .issue-item {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 50px 1fr 120px;
-            align-items: center;
-            gap: 20px;
-            transition: all 0.2s ease;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 30px;
         }
 
-        .issue-item:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .severity-badge {
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .sev-critical { background: #fee2e2; color: var(--danger); }
-        .sev-medium { background: #fffbeb; color: var(--warning); }
-        .sev-low { background: #eff6ff; color: var(--primary); }
-
-        .issue-text h4 {
-            font-size: 1.1rem;
+        .issue-item h4 {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .issue-text p {
-            color: var(--secondary);
-            font-size: 0.9rem;
-        }
-
-        .issue-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-security { background: #fef2f2; color: var(--danger); }
-        .icon-perf { background: #fff7ed; color: var(--warning); }
-        .icon-func { background: #f0f9ff; color: var(--primary); }
-
-        /* Footer */
-        .footer {
-            margin-top: 100px;
-            text-align: center;
-            padding: 50px;
-            background: #0f172a;
-            color: white;
-            border-radius: 30px 30px 0 0;
-        }
-
-        .footer p { opacity: 0.6; font-size: 0.9rem; margin-top: 10px; }
-
-        .export-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: var(--shadow-lg);
-            cursor: pointer;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            z-index: 100;
+        }
+
+        .issue-item p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .severity {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* Catchy Floating Action */
+        .export-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--accent);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(255, 62, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .export-btn:hover {
-            transform: scale(1.05);
-            background: var(--primary-dark);
+            transform: scale(1.1) rotate(90deg);
         }
 
         @media (max-width: 768px) {
-            .metrics-grid { grid-template-columns: 1fr; }
-            .info-bar { flex-direction: column; gap: 30px; text-align: center; }
-            .issue-item { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-            header h1 { font-size: 2.5rem; }
+            header h1 { font-size: 3rem; }
+            .issue-grid { grid-template-columns: 1fr; }
+            .header-meta { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <a href="javascript:window.print()" class="export-btn no-print">
-        <i data-lucide="printer"></i>
-        Export to PDF
-    </a>
-
-    <header>
-        <div class="header-content">
-            <p>WEBSITE SECURITY & PERFORMANCE AUDIT</p>
-            <h1>Synloop.in</h1>
-        </div>
-    </header>
+    <div class="export-btn no-print" onclick="window.print()">
+        <i data-lucide="arrow-down"></i>
+    </div>
 
     <div class="container">
-        <!-- Info Bar -->
-        <div class="info-bar">
-            <div class="info-group">
-                <div class="info-icon"><i data-lucide="user"></i></div>
-                <div class="info-text">
-                    <span>Audit Conducted By</span>
-                    <h2>Rudraksh Zodage</h2>
-                </div>
+        <header>
+            <h1>Audit.<br>Synloop</h1>
+            <div class="header-meta">
+                <span>BY <b>RUDRAKSH ZODAGE</b></span>
+                <span>FOR <b>SYNLOOP.IN</b></span>
             </div>
-            <div class="info-group">
-                <div class="info-icon"><i data-lucide="mail"></i></div>
-                <div class="info-text">
-                    <span>Contact Email</span>
-                    <h2>rudrakshrakeshzodage@gmail.com</h2>
-                </div>
+        </header>
+
+        <span class="section-label">Performance</span>
+        <div class="metrics-flex">
+            <div class="metric-box">
+                <p>Desktop</p>
+                <h2>98</h2>
+                <p>Score / 100</p>
             </div>
-            <div class="info-group">
-                <div class="info-icon"><i data-lucide="globe"></i></div>
-                <div class="info-text">
-                    <span>Target URL</span>
-                    <h2>https://www.synloop.in/</h2>
-                </div>
+            <div class="metric-box">
+                <p>Mobile</p>
+                <h2>87</h2>
+                <p>Score / 100</p>
             </div>
         </div>
 
-        <!-- Performance Section -->
-        <div class="section-header">
-            <h3><i data-lucide="zap"></i> Performance Dashboard</h3>
-        </div>
-
-        <div class="metrics-grid">
-            <!-- Desktop Card -->
-            <div class="performance-card">
-                <div class="card-header">
-                    <div>
-                        <h2>Desktop Testing</h2>
-                        <p style="color: var(--secondary)">Highly Optimized Experience</p>
-                    </div>
-                    <div class="score-display">
-                        <div class="score-circle perfect">98</div>
-                        <span style="font-size: 0.7rem; font-weight: 800; color: var(--success)">PERFECT</span>
-                    </div>
-                </div>
-                <div class="metric-list">
-                    <div class="metric-item">
-                        <span class="label">First Contentful Paint</span>
-                        <span class="value">0.7s</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Largest Contentful Paint</span>
-                        <span class="value">0.7s</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Total Blocking Time</span>
-                        <span class="value">0ms</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Cumulative Layout Shift</span>
-                        <span class="value">0.001</span>
-                    </div>
-                </div>
-                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-weight: 600; color: var(--secondary)">Speed Index</span>
-                    <span style="font-weight: 800; color: var(--dark); font-size: 1.4rem;">1.5s</span>
-                </div>
+        <span class="section-label">Security Flaws</span>
+        <div class="issue-grid">
+            <div class="issue-item">
+                <h4><i data-lucide="shield-off"></i> CSP</h4>
+                <p>No Content Security Policy. Vulnerable to XSS.</p>
+                <span class="severity">Critical</span>
             </div>
-
-            <!-- Mobile Card -->
-            <div class="performance-card">
-                <div class="card-header">
-                    <div>
-                        <h2>Mobile Testing</h2>
-                        <p style="color: var(--secondary)">Requires Critical Optimization</p>
-                    </div>
-                    <div class="score-display">
-                        <div class="score-circle good">87</div>
-                        <span style="font-size: 0.7rem; font-weight: 800; color: var(--warning)">NEEDS IMPROVEMENT</span>
-                    </div>
-                </div>
-                <div class="metric-list">
-                    <div class="metric-item">
-                        <span class="label">First Contentful Paint</span>
-                        <span class="value">2.9s</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Largest Contentful Paint</span>
-                        <span class="value">3.4s</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Total Blocking Time</span>
-                        <span class="value">0ms</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="label">Cumulative Layout Shift</span>
-                        <span class="value">0.001</span>
-                    </div>
-                </div>
-                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-weight: 600; color: var(--secondary)">Speed Index</span>
-                    <span style="font-weight: 800; color: var(--dark); font-size: 1.4rem;">2.9s</span>
-                </div>
+            <div class="issue-item">
+                <h4><i data-lucide="key"></i> TLS</h4>
+                <p>Weak Cipher Suites detected in TLS 1.2.</p>
+                <span class="severity">Critical</span>
+            </div>
+            <div class="issue-item">
+                <h4><i data-lucide="mail"></i> DMARC</h4>
+                <p>Policy set to p=none. No spoofing protection.</p>
+                <span class="severity">Medium</span>
+            </div>
+            <div class="issue-item">
+                <h4><i data-lucide="globe"></i> DNSSEC</h4>
+                <p>DNS Security Extensions are not enabled.</p>
+                <span class="severity">Medium</span>
+            </div>
+            <div class="issue-item">
+                <h4><i data-lucide="lock"></i> HSTS</h4>
+                <p>Missing from HSTS preload list.</p>
+                <span class="severity">Medium</span>
+            </div>
+            <div class="issue-item">
+                <h4><i data-lucide="frame"></i> Frame</h4>
+                <p>X-Frame-Options allows clickjacking.</p>
+                <span class="severity">Low</span>
             </div>
         </div>
 
-        <!-- Security & Compliance -->
-        <div class="section-header">
-            <h3><i data-lucide="shield-check"></i> Security & Compliance Audit</h3>
-        </div>
-
-        <div class="issue-container">
-            <!-- Security Items -->
+        <span class="section-label">Functional Issues</span>
+        <div class="issue-grid">
             <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="shield-alert"></i></div>
-                <div class="issue-text">
-                    <h4>Content Security Policy (CSP) Missing</h4>
-                    <p>No valid CSP found. This exposes the site to Cross-Site Scripting (XSS) and code injection.</p>
-                </div>
-                <div class="severity-badge sev-critical">Critical</div>
+                <h4><i data-lucide="share-2"></i> Links</h4>
+                <p>Twitter/LinkedIn redirects are broken.</p>
+                <span class="severity">High Priority</span>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="key"></i></div>
-                <div class="issue-text">
-                    <h4>Weak Cipher Suites Supported</h4>
-                    <p>TLS 1.2 configuration includes weak ciphers vulnerable to modern cryptographic attacks.</p>
-                </div>
-                <div class="severity-badge sev-critical">Critical</div>
+                <h4><i data-lucide="phone"></i> Whatsapp</h4>
+                <p>Contact button does not trigger chat.</p>
+                <span class="severity">High Priority</span>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="mail-warning"></i></div>
-                <div class="issue-text">
-                    <h4>DMARC Policy (p=none)</h4>
-                    <p>Insufficient protection against domain spoofing. Current policy does not trigger rejection/quarantine.</p>
-                </div>
-                <div class="severity-badge sev-medium">Medium Risk</div>
+                <h4><i data-lucide="database"></i> Forms</h4>
+                <p>Static form, no database connection.</p>
+                <span class="severity">High Priority</span>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="server"></i></div>
-                <div class="issue-text">
-                    <h4>DNSSEC Not Configured</h4>
-                    <p>Missing security extensions for DNS, allowing for potential DNS poisoning or hijacking.</p>
-                </div>
-                <div class="severity-badge sev-medium">Medium Risk</div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="lock"></i></div>
-                <div class="issue-text">
-                    <h4>HSTS Preload List Missing</h4>
-                    <p>Domain not pre-cached in browsers as HTTPS-only, leaving first-visit users vulnerable to MITM.</p>
-                </div>
-                <div class="severity-badge sev-medium">Medium Risk</div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-icon icon-security"><i data-lucide="layout"></i></div>
-                <div class="issue-text">
-                    <h4>X-Frame-Options Weakness</h4>
-                    <p>Not set to 'DENY' or 'SAMEORIGIN', permitting clickjacking via iframe embedding.</p>
-                </div>
-                <div class="severity-badge sev-low">Low Risk</div>
+                <h4><i data-lucide="check-circle"></i> Validation</h4>
+                <p>No rules for symbols or special characters.</p>
+                <span class="severity">Medium</span>
             </div>
         </div>
 
-        <!-- Functional Issues -->
-        <div class="section-header">
-            <h3><i data-lucide="alert-circle"></i> Functional & UI Defects</h3>
-        </div>
-
-        <div class="issue-container">
+        <span class="section-label">Optimizations</span>
+        <div class="issue-grid">
             <div class="issue-item">
-                <div class="issue-icon icon-func"><i data-lucide="link-2"></i></div>
-                <div class="issue-text">
-                    <h4>Broken Social Profile Links</h4>
-                    <p>Redirection to Twitter and LinkedIn profiles is failing (Invalid/Missing URLs).</p>
-                </div>
-                <div class="severity-badge sev-critical">High Priority</div>
+                <h4><i data-lucide="archive"></i> Gzip</h4>
+                <p>Enable compression for faster loading.</p>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-func"><i data-lucide="message-square"></i></div>
-                <div class="issue-text">
-                    <h4>WhatsApp Integration Failure</h4>
-                    <p>Direct communication button is non-functional, preventing immediate lead conversion.</p>
-                </div>
-                <div class="severity-badge sev-critical">High Priority</div>
+                <h4><i data-lucide="clock"></i> Cache</h4>
+                <p>Implement proper Expires headers.</p>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-func"><i data-lucide="database"></i></div>
-                <div class="issue-text">
-                    <h4>Static Contact Form</h4>
-                    <p>No backend database connection detected. Form submissions are not being recorded or processed.</p>
-                </div>
-                <div class="severity-badge sev-critical">High Priority</div>
+                <h4><i data-lucide="zap"></i> Render</h4>
+                <p>Critical path requests are blocking render.</p>
             </div>
-
             <div class="issue-item">
-                <div class="issue-icon icon-func"><i data-lucide="validator"></i></div>
-                <div class="issue-text">
-                    <h4>Form Input Validation Missing</h4>
-                    <p>Fields accept special characters and malformed data. High risk of SQL injection or data corruption.</p>
-                </div>
-                <div class="severity-badge sev-medium">Medium Risk</div>
+                <h4><i data-lucide="layers"></i> Chaining</h4>
+                <p>Reduce network dependency tree length.</p>
             </div>
         </div>
 
-        <!-- Performance Optimization -->
-        <div class="section-header">
-            <h3><i data-lucide="trending-up"></i> Required Performance Enhancements</h3>
-        </div>
-
-        <div class="issue-container">
-            <div class="issue-item">
-                <div class="issue-icon icon-perf"><i data-lucide="minimize"></i></div>
-                <div class="issue-text">
-                    <h4>Enable Gzip/Brotli Compression</h4>
-                    <p>Lack of component compression is increasing payload size and delaying time-to-interact.</p>
-                </div>
-                <div class="severity-badge sev-medium">Optimization</div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-icon icon-perf"><i data-lucide="clock"></i></div>
-                <div class="issue-text">
-                    <h4>Add Expires Headers</h4>
-                    <p>Missing caching strategy causes redundant HTTP requests on every subsequent page view.</p>
-                </div>
-                <div class="severity-badge sev-medium">Optimization</div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-icon icon-perf"><i data-lucide="layers"></i></div>
-                <div class="issue-text">
-                    <h4>Critical Rendering Path Blocked</h4>
-                    <p>Synchronous requests are delaying the Largest Contentful Paint (LCP).</p>
-                </div>
-                <div class="severity-badge sev-critical">Priority Fix</div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-icon icon-perf"><i data-lucide="git-branch"></i></div>
-                <div class="issue-text">
-                    <h4>Complex Network Dependency Tree</h4>
-                    <p>Deep request chaining detected. Reducing chain length will drastically improve load speed.</p>
-                </div>
-                <div class="severity-badge sev-medium">Optimization</div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <h2 style="font-family: 'Outfit'; letter-spacing: 1px;">FINAL AUDIT SUMMARY</h2>
-            <p>Report Generated on: May 2, 2026 | 06:06 PM (IST)</p>
-            <p>Proprietary Content - Compiled by Rudraksh Zodage</p>
-        </div>
     </div>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
     </script>
 </body>
 </html>
-
