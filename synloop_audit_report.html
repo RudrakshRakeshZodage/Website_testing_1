@@ -34,23 +34,13 @@
             background-color: var(--bg);
             color: var(--dark);
             line-height: 1.6;
-            padding: 20px 0 40px; /* 20px top padding always */
+            padding: 20px 0 40px;
         }
 
         @media print {
-            @page { 
-                margin: 0; 
-                size: auto; 
-            }
-            body { 
-                padding: 2cm 2cm 2cm; /* Keeps the print margins clean */
-                padding-top: 20px !important; /* Forces 20px top in print if needed */
-                background-color: white; 
-            }
-            .no-print { 
-                display: none !important; 
-                visibility: hidden !important;
-            }
+            @page { margin: 0; size: auto; }
+            body { padding: 2cm; padding-top: 20px !important; background-color: white; }
+            .no-print { display: none !important; visibility: hidden !important; }
             .container { max-width: 100% !important; margin: 0 !important; }
             .issue-card { break-inside: avoid; border: 1px solid #eee !important; }
         }
@@ -61,19 +51,18 @@
             padding: 0 30px;
         }
 
-        /* Catchy Professional Header */
         header {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 2px solid var(--dark);
         }
 
         .header-title h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1;
@@ -83,19 +72,31 @@
         .header-title p {
             font-size: 1.1rem;
             color: var(--slate);
-            font-weight: 500;
-            margin-top: 5px;
+            font-weight: 600;
+            margin-top: 8px;
         }
 
         .auditor-meta {
             text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
         }
 
         .auditor-meta b { color: var(--primary); text-transform: uppercase; }
 
-        /* Metrics Summary */
+        /* Performance Section */
+        .section-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -106,294 +107,357 @@
         .metric-card {
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .metric-main {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
 
         .metric-info h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--slate);
+            font-size: 1.2rem;
+            font-weight: 800;
             margin-bottom: 5px;
         }
 
-        .metric-info h2 {
+        .metric-score {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: 900;
             line-height: 1;
         }
 
-        .score-indicator {
-            width: 12px;
-            height: 50px;
-            border-radius: 10px;
+        .score-98 { color: var(--success); }
+        .score-87 { color: var(--medium); }
+
+        .metric-details-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .score-98 { background: var(--success); }
-        .score-87 { background: var(--medium); }
+        .detail-item span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--slate);
+        }
 
-        /* Priority Sections */
-        .priority-header {
-            margin: 40px 0 25px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+        .detail-item b {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .metric-meta {
+            font-size: 0.75rem;
+            color: var(--slate);
+            line-height: 1.4;
+        }
+
+        .metric-meta i {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Issue Priority Sections */
+        .priority-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 800;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 15px;
         }
 
-        .priority-header.high { color: var(--high); }
-        .priority-header.medium { color: var(--medium); }
-        .priority-header.low { color: var(--low); }
+        .label-high { background: #fee2e2; color: var(--high); }
+        .label-medium { background: #fffbeb; color: var(--medium); }
+        .label-low { background: #eff6ff; color: var(--low); }
 
         .issue-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .issue-card {
             background: #fff;
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 25px;
             display: grid;
-            grid-template-columns: 48px 1fr;
+            grid-template-columns: 56px 1fr;
             gap: 20px;
-            align-items: flex-start;
+            align-items: center;
             transition: all 0.2s ease;
         }
 
         .issue-card:hover {
             border-color: var(--dark);
-            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .issue-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            font-size: 1.5rem;
         }
 
-        .bg-high { background: var(--high); }
-        .bg-medium { background: var(--medium); }
-        .bg-low { background: var(--low); }
+        .icon-high { background: #fee2e2; color: var(--high); }
+        .icon-medium { background: #fffbeb; color: var(--medium); }
+        .icon-low { background: #eff6ff; color: var(--low); }
 
         .issue-details h4 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
         }
 
         .issue-details p {
             font-size: 0.95rem;
             color: var(--slate);
+            font-weight: 500;
         }
 
-        /* Floating Export */
         .export-btn {
             position: fixed;
             bottom: 40px;
             right: 40px;
             background: var(--dark);
             color: white;
-            padding: 15px 25px;
+            padding: 18px 30px;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             z-index: 100;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .export-btn:hover { background: var(--primary); }
+        .export-btn:hover { background: var(--primary); transform: translateY(-2px); }
 
         @media (max-width: 768px) {
             header { flex-direction: column; align-items: flex-start; gap: 20px; }
             .metrics-grid { grid-template-columns: 1fr; }
-            .header-title h1 { font-size: 2.5rem; }
+            .header-title h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="export-btn no-print" onclick="window.print()">
-        <i data-lucide="download"></i> Export PDF
+        <i data-lucide="file-down"></i> Download Report
     </div>
 
     <div class="container">
         <header>
             <div class="header-title">
-                <h1>SYNLOOP AUDIT</h1>
-                <p>Website URL: https://www.synloop.in/</p>
+                <h1>Audit.<br>Synloop</h1>
+                <p>https://www.synloop.in/</p>
             </div>
             <div class="auditor-meta">
-                AUDIT CONDUCTED BY<br>
+                VERIFIED BY<br>
                 <b>Rudraksh Zodage</b><br>
                 rudrakshrakeshzodage@gmail.com
             </div>
         </header>
 
-        <!-- Performance Summary -->
+        <div class="section-header">Lighthouse Performance</div>
+        
         <div class="metrics-grid">
+            <!-- Desktop Detailed -->
             <div class="metric-card">
-                <div class="metric-info">
-                    <h3>Desktop Performance</h3>
-                    <h2>98</h2>
+                <div class="metric-main">
+                    <div class="metric-info">
+                        <h3>Desktop Testing</h3>
+                        <p style="color: var(--success); font-weight: 700; font-size: 0.8rem;">Optimization: Near Perfect</p>
+                    </div>
+                    <div class="metric-score score-98">98</div>
                 </div>
-                <div class="score-indicator score-98"></div>
+                <div class="metric-details-list">
+                    <div class="detail-item"><span>FCP</span><b>0.7s</b></div>
+                    <div class="detail-item"><span>LCP</span><b>0.7s</b></div>
+                    <div class="detail-item"><span>TBT</span><b>0ms</b></div>
+                    <div class="detail-item"><span>CLS</span><b>0.001</b></div>
+                </div>
+                <div class="metric-meta">
+                    <div><i data-lucide="monitor" size="14"></i> Emulated Desktop (Lighthouse 13.0.1)</div>
+                    <div><i data-lucide="gauge" size="14"></i> Throttling: Custom / Speed Index: 1.5s</div>
+                </div>
             </div>
+
+            <!-- Mobile Detailed -->
             <div class="metric-card">
-                <div class="metric-info">
-                    <h3>Mobile Performance</h3>
-                    <h2>87</h2>
+                <div class="metric-main">
+                    <div class="metric-info">
+                        <h3>Mobile Testing</h3>
+                        <p style="color: var(--medium); font-weight: 700; font-size: 0.8rem;">Optimization: Needs Work</p>
+                    </div>
+                    <div class="metric-score score-87">87</div>
                 </div>
-                <div class="score-indicator score-87"></div>
+                <div class="metric-details-list">
+                    <div class="detail-item"><span>FCP</span><b>2.9s</b></div>
+                    <div class="detail-item"><span>LCP</span><b>3.4s</b></div>
+                    <div class="detail-item"><span>TBT</span><b>0ms</b></div>
+                    <div class="detail-item"><span>CLS</span><b>0.001</b></div>
+                </div>
+                <div class="metric-meta">
+                    <div><i data-lucide="smartphone" size="14"></i> Moto G Power (Lighthouse 13.0.1)</div>
+                    <div><i data-lucide="wifi" size="14"></i> Throttling: Slow 4G / Speed Index: 2.9s</div>
+                </div>
             </div>
         </div>
 
-        <!-- HIGH PRIORITY SECTION -->
-        <div class="priority-header high">
-            <i data-lucide="alert-triangle"></i> High Priority Issues
-        </div>
+        <div class="section-header">Critical Security Flaws</div>
         <div class="issue-grid">
+            <div class="priority-label label-high"><i data-lucide="alert-octagon" size="14"></i> Critical / High Priority</div>
+            
             <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="link"></i></div>
-                <div class="issue-details">
-                    <h4>Broken Social Media Links</h4>
-                    <p>Redirects to Twitter and LinkedIn profiles are not properly linked, leading to 404 or inactive pages.</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="message-square"></i></div>
-                <div class="issue-details">
-                    <h4>WhatsApp Integration Failure</h4>
-                    <p>The WhatsApp button is currently non-functional and does not initiate a chat window.</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="database"></i></div>
-                <div class="issue-details">
-                    <h4>Static Form Submission</h4>
-                    <p>Contact form is static with no database connection. Submissions are not processed or saved.</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="validator"></i></div>
-                <div class="issue-details">
-                    <h4>Missing Form Validation</h4>
-                    <p>Input fields accept special symbols and invalid data patterns. No server-side or client-side rules implemented.</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="shield-off"></i></div>
+                <div class="issue-icon icon-high"><i data-lucide="shield-off"></i></div>
                 <div class="issue-details">
                     <h4>CSP Not Implemented</h4>
-                    <p>No valid Content Security Policy (CSP) found, increasing vulnerability to XSS and clickjacking attacks.</p>
+                    <p>No Content Security Policy found. High risk of XSS and data injection attacks.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="key"></i></div>
+                <div class="issue-icon icon-high"><i data-lucide="fingerprint"></i></div>
                 <div class="issue-details">
                     <h4>Weak Cipher Suites (TLS 1.2)</h4>
-                    <p>Server supports outdated and weak cipher suites in TLS 1.2 which are vulnerable to decryption attacks.</p>
+                    <p>Server supports outdated TLS 1.2 ciphers vulnerable to modern decryption techniques.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-high"><i data-lucide="zap-off"></i></div>
+                <div class="issue-icon icon-high"><i data-lucide="link-2-off"></i></div>
                 <div class="issue-details">
-                    <h4>Render Blocking Requests</h4>
-                    <p>Initial render is blocked by critical network requests, significantly delaying the Largest Contentful Paint (LCP).</p>
+                    <h4>Broken Profile Redirects</h4>
+                    <p>Twitter and LinkedIn profile links are inactive or misconfigured, leading to dead ends.</p>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-icon icon-high"><i data-lucide="message-circle"></i></div>
+                <div class="issue-details">
+                    <h4>WhatsApp Integration Failure</h4>
+                    <p>The WhatsApp contact trigger is broken and does not initiate a chat session.</p>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-icon icon-high"><i data-lucide="hard-drive-download"></i></div>
+                <div class="issue-details">
+                    <h4>Static Form / No Database</h4>
+                    <p>Contact form is static. Data is not saved to any backend database upon submission.</p>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-icon icon-high"><i data-lucide="binary"></i></div>
+                <div class="issue-details">
+                    <h4>Missing Form Validation</h4>
+                    <p>Input fields accept special symbols and malformed data. Crucial security risk for form injection.</p>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-icon icon-high"><i data-lucide="timer-off"></i></div>
+                <div class="issue-details">
+                    <h4>Render Blocking Network Chain</h4>
+                    <p>Synchronous requests are delaying the Largest Contentful Paint (LCP) significantly.</p>
                 </div>
             </div>
         </div>
 
-        <!-- MEDIUM PRIORITY SECTION -->
-        <div class="priority-header medium">
-            <i data-lucide="alert-circle"></i> Medium Priority Issues
-        </div>
+        <div class="section-header">Compliance & Health</div>
         <div class="issue-grid">
+            <div class="priority-label label-medium"><i data-lucide="alert-circle" size="14"></i> Medium Priority</div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="mail"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="mail-warning"></i></div>
                 <div class="issue-details">
                     <h4>DMARC Policy: p=none</h4>
-                    <p>Current DMARC policy provides zero protection against fraudulent emails. Should be p=quarantine or p=reject.</p>
+                    <p>Current DMARC configuration offers no protection against email domain spoofing.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="shield-check"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="file-warning"></i></div>
                 <div class="issue-details">
-                    <h4>SPF Policy Too Lenient</h4>
-                    <p>Sender Policy Framework (SPF) record uses (~all), which is too permissive for authorized mail domains.</p>
+                    <h4>SPF Policy Too Permissive</h4>
+                    <p>SPF record uses (~all) which allows unauthorized servers to send mail on your behalf.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="globe"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="globe"></i></div>
                 <div class="issue-details">
-                    <h4>DNSSEC Not Enabled (Security Check 1)</h4>
-                    <p>Domain lacks DNSSEC records, allowing third parties to forge records that guarantee domain identity.</p>
+                    <h4>DNSSEC Not Enabled (Audit 1)</h4>
+                    <p>Missing DNS security extensions, making the site vulnerable to DNS poisoning.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="globe"></i></div>
-                <div class="issue-details">
-                    <h4>DNSSEC Not Enabled (Security Check 2)</h4>
-                    <p>Redundant check confirms DNSSEC configuration is missing for this domain's zone.</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="lock"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="shield-check"></i></div>
                 <div class="issue-details">
                     <h4>HSTS Preload List Missing</h4>
-                    <p>Domain is not found on the HSTS preload list, leaving first-time visitors vulnerable to MITM attacks.</p>
+                    <p>Domain is not pre-registered for HTTPS-only access in browser internal caches.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="minimize"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="shrink"></i></div>
                 <div class="issue-details">
                     <h4>Missing Gzip Compression</h4>
-                    <p>Components are not compressed. Enabling Gzip/Brotli would reduce response times by decreasing payload size.</p>
+                    <p>Assets are delivered uncompressed, increasing download times and server bandwidth.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="clock"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="history"></i></div>
                 <div class="issue-details">
                     <h4>Missing Expires Headers</h4>
-                    <p>Static components are not cacheable. Expires headers are needed to avoid unnecessary HTTP requests.</p>
+                    <p>Static assets are not cached locally in users' browsers for subsequent visits.</p>
                 </div>
             </div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-medium"><i data-lucide="git-branch"></i></div>
+                <div class="issue-icon icon-medium"><i data-lucide="git-merge"></i></div>
                 <div class="issue-details">
-                    <h4>Network Dependency Tree Length</h4>
-                    <p>Chain length of critical requests is too high. Download size and chaining must be reduced for LCP improvement.</p>
+                    <h4>Deep Request Chaining</h4>
+                    <p>The network dependency tree has excessively long chains, slowing down page completion.</p>
                 </div>
             </div>
         </div>
 
-        <!-- LOW PRIORITY SECTION -->
-        <div class="priority-header low">
-            <i data-lucide="info"></i> Low Priority Issues
-        </div>
+        <div class="section-header">Hardening</div>
         <div class="issue-grid">
+            <div class="priority-label label-low"><i data-lucide="shield-ellipsis" size="14"></i> Low Priority</div>
+
             <div class="issue-card">
-                <div class="issue-icon bg-low"><i data-lucide="layout"></i></div>
+                <div class="issue-icon icon-low"><i data-lucide="box"></i></div>
                 <div class="issue-details">
                     <h4>X-Frame-Options Insecure</h4>
-                    <p>Policy is not set to DENY or SAMEORIGIN, allowing browsers to display content in frames (Clickjacking risk).</p>
+                    <p>Frame protection is not strict, allowing potential UI redressing or clickjacking.</p>
                 </div>
             </div>
         </div>
