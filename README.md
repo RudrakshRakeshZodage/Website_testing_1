@@ -1,4 +1,4 @@
-# 🛡️ Synloop Website Audit System
+# 🛡️ Synloop Website Audit System - REPORT
 
 A high-premium, professional website audit reporting system designed for **Synloop.in**. This project provides a comprehensive analysis of security, performance, and functional aspects of the web platform, delivered via a sleek, minimalistic, and eye-catchy interface.
 
